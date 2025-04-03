@@ -1,6 +1,7 @@
 package com.tis.interview.product.configuration.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tis.interview.product.configuration.ApplicationProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
@@ -23,13 +24,21 @@ class GetClientTest {
     private GetClient getClient;
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private ApplicationProperties appProps;
 
     @Test
     void getHnbExchangeRate() throws IOException {
         String validExchange = readJsonFile("src/test/resources/jsons/valid_usd_hnb_excange.json");
 
-        this.server.expect(requestTo("/hnb-api"))
-                .andRespond(withSuccess(validExchange, MediaType.APPLICATION_JSON));
+        this.server.expect(
+                        requestTo(
+                                appProps.getHnb().getCurrencyUri() +
+                                        appProps.getHnb().getCurrency())
+                )
+                .andRespond(
+                        withSuccess(validExchange, MediaType.APPLICATION_JSON)
+                );
 
         var hnbResponse = getClient.getHnbExchangeRate();
 
