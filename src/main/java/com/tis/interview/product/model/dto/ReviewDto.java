@@ -1,4 +1,4 @@
-package com.tis.interview.product.dto;
+package com.tis.interview.product.model.dto;
 
 import com.tis.interview.product.model.Product;
 import lombok.*;

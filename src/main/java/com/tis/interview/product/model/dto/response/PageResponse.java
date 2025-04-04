@@ -1,4 +1,4 @@
-package com.tis.interview.product.dto.response;
+package com.tis.interview.product.model.dto.response;
 
 import lombok.*;
 

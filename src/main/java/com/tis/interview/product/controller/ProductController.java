@@ -1,7 +1,7 @@
 package com.tis.interview.product.controller;
 
-import com.tis.interview.product.dto.ProductDto;
-import com.tis.interview.product.dto.response.PageResponse;
+import com.tis.interview.product.model.dto.ProductDto;
+import com.tis.interview.product.model.dto.response.PageResponse;
 import com.tis.interview.product.service.product.ProductServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

@@ -1,7 +1,7 @@
 package com.tis.interview.product.configuration.client;
 
 import com.tis.interview.product.configuration.ApplicationProperties;
-import com.tis.interview.product.dto.HnbResponse;
+import com.tis.interview.product.model.dto.HnbResponse;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;

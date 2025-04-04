@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @EqualsAndHashCode //TODO remove
 @ToString
 @Getter
@@ -22,6 +24,7 @@ public class Review extends BaseEntity {
     private String text;
     @NotNull(message = "Product rating is mandatory")
     private int rating;
+    private LocalDateTime createdAt;
 
     @Valid
     @ManyToOne(optional = false, fetch = FetchType.EAGER)

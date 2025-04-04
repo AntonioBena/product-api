@@ -1,7 +1,7 @@
 package com.tis.interview.product.service.product;
 
-import com.tis.interview.product.dto.ProductDto;
-import com.tis.interview.product.dto.response.PageResponse;
+import com.tis.interview.product.model.dto.ProductDto;
+import com.tis.interview.product.model.dto.response.PageResponse;
 
 public interface ProductService {
     void createOrUpdateProduct(ProductDto request);
