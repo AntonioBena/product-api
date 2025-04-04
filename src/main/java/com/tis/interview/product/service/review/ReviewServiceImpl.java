@@ -69,9 +69,9 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public PageResponse<ReviewDto> getAllDisplayableReviews(Long productId, int page, int size) {
+    public PageResponse<ReviewDto> getAllDisplayableReviews(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
-        return transformToPageResponse(reviewRepository.findAllByProductId(productId, pageable), ReviewDto.class);
+        return transformToPageResponse(reviewRepository.findAllByProductCode(productCode, pageable), ReviewDto.class);
     }
 
     private Review findReviewByIdOrThrow(Long id){

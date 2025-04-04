@@ -6,5 +6,5 @@ import com.tis.interview.product.model.dto.response.PageResponse;
 public interface ReviewService {
     void createOrUpdateReview(ReviewDto request, String productCode);
     void deleteReview(Long id);
-    PageResponse<ReviewDto> getAllDisplayableReviews(Long productId, int page, int size);
+    PageResponse<ReviewDto> getAllDisplayableReviews(String productCode, int page, int size);
 }
