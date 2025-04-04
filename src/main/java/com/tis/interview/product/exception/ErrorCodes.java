@@ -11,6 +11,8 @@ public enum ErrorCodes {
     ACCOUNT_LOCKED(302, FORBIDDEN, "User account is locked"),
     UNAUTHORIZED_ACCESS(401, UNAUTHORIZED, "User can not access resource"),
     USER_NOT_FOUND(404, NOT_FOUND, "User not found"),
+    PRODUCT_NOT_FOUND(404, NOT_FOUND, "Product not found"),
+    REVIEW_NOT_FOUND(404, NOT_FOUND, "Review not found"),
     INCORRECT_CURRENT_PASSWORD(300, BAD_REQUEST, "Incorrect password"),
     PASSWORD_DOES_NOT_MATCH(301, BAD_REQUEST, "The new password does not match"),
     ACCOUNT_DISABLED(303, FORBIDDEN, "Account disabled"),

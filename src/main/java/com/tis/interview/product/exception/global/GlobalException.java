@@ -1,6 +1,8 @@
 package com.tis.interview.product.exception.global;
 
 import com.tis.interview.product.exception.ExceptionResponse;
+import com.tis.interview.product.exception.domain.ProductNotFoundException;
+import com.tis.interview.product.exception.domain.ReviewNotFoundException;
 import com.tis.interview.product.exception.security.RegisteredUserException;
 import com.tis.interview.product.exception.security.UnauthorizedException;
 import com.tis.interview.product.exception.security.UserNotFoundException;
@@ -23,4 +25,10 @@ public interface GlobalException {
 
     @ExceptionHandler(UserNotFoundException.class)
     ResponseEntity<ExceptionResponse> handleException(UserNotFoundException exp);
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    ResponseEntity<ExceptionResponse> handleException(ProductNotFoundException exp);
+
+    @ExceptionHandler(ReviewNotFoundException.class)
+    ResponseEntity<ExceptionResponse> handleException(ReviewNotFoundException exp);
 }

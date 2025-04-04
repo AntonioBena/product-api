@@ -1,6 +1,8 @@
 package com.tis.interview.product.exception.global;
 
 import com.tis.interview.product.exception.ExceptionResponse;
+import com.tis.interview.product.exception.domain.ProductNotFoundException;
+import com.tis.interview.product.exception.domain.ReviewNotFoundException;
 import com.tis.interview.product.exception.security.RegisteredUserException;
 import com.tis.interview.product.exception.security.UnauthorizedException;
 import com.tis.interview.product.exception.security.UserNotFoundException;
@@ -12,8 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.tis.interview.product.exception.ErrorCodes.UNAUTHORIZED_ACCESS;
-import static com.tis.interview.product.exception.ErrorCodes.USER_NOT_FOUND;
+import static com.tis.interview.product.exception.ErrorCodes.*;
 import static org.springframework.http.HttpStatus.*;
 
 @Slf4j
@@ -81,6 +82,32 @@ public class GlobalExceptionHandler implements GlobalException {
                         ExceptionResponse.builder()
                                 .code(USER_NOT_FOUND.getCode())
                                 .description(USER_NOT_FOUND.getDescription())
+                                .error(exp.getMessage())
+                                .build()
+                );
+    }
+
+    @Override
+    public ResponseEntity<ExceptionResponse> handleException(ProductNotFoundException exp) {
+        return ResponseEntity
+                .status(NOT_FOUND)
+                .body(
+                        ExceptionResponse.builder()
+                                .code(PRODUCT_NOT_FOUND.getCode())
+                                .description(PRODUCT_NOT_FOUND.getDescription())
+                                .error(exp.getMessage())
+                                .build()
+                );
+    }
+
+    @Override
+    public ResponseEntity<ExceptionResponse> handleException(ReviewNotFoundException exp) {
+        return ResponseEntity
+                .status(NOT_FOUND)
+                .body(
+                        ExceptionResponse.builder()
+                                .code(REVIEW_NOT_FOUND.getCode())
+                                .description(REVIEW_NOT_FOUND.getDescription())
                                 .error(exp.getMessage())
                                 .build()
                 );
