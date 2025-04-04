@@ -5,6 +5,7 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 
 @EqualsAndHashCode //TODO remove
 @ToString
@@ -26,4 +27,5 @@ public class Product extends BaseEntity {
     private BigInteger price;
     @Column(name = "description", columnDefinition = "text")
     private String description;
+    private LocalDateTime createdAt; //TODO check if audit is possible with h2
 }
