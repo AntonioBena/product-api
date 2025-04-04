@@ -92,6 +92,11 @@ public class ProductServiceImpl implements ProductService {
         );
     }
 
+    public ProductDto findProductByCode(String productCode){
+        var foundProduct = findProductByCodeOrThrow(productCode);
+        return mapper.map(foundProduct, ProductDto.class);
+    }
+
     private Product findProductByCodeOrThrow(String productCode){
         return productRepository.findByCode(productCode)
                 .orElseThrow(()-> new ProductNotFoundException("Product not found!"));
