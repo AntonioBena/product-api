@@ -1,4 +1,4 @@
-package com.tis.interview.product.service;
+package com.tis.interview.product.service.product;
 
 import com.tis.interview.product.dto.ProductDto;
 import com.tis.interview.product.dto.response.PageResponse;

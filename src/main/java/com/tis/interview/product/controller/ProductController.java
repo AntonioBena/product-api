@@ -2,7 +2,7 @@ package com.tis.interview.product.controller;
 
 import com.tis.interview.product.dto.ProductDto;
 import com.tis.interview.product.dto.response.PageResponse;
-import com.tis.interview.product.service.ProductServiceImpl;
+import com.tis.interview.product.service.product.ProductServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -53,7 +53,7 @@ public class ProductController {
             summary = "Deletes product by product code"
     )
     @DeleteMapping("/delete/{productCode}")
-    public ResponseEntity<HttpStatus> deleteBlogPostById(@PathVariable(value = "productCode") String productCode) {
+    public ResponseEntity<HttpStatus> deleteProductById(@PathVariable(value = "productCode") String productCode) {
         productService.deleteProduct(productCode);
         return ResponseEntity.ok().build();
     }
