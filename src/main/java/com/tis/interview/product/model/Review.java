@@ -1,10 +1,13 @@
 package com.tis.interview.product.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+@EqualsAndHashCode //TODO remove
+@ToString
 @Getter
 @Setter
 @Builder
@@ -13,13 +16,15 @@ import lombok.*;
 @Entity
 @Table(name = "review")
 public class Review extends BaseEntity {
-    // - REVIEWER
-    @ManyToOne
-    @JoinColumn(name = "comment_post_id", nullable = false)
-    private Product product;
+    // - REVIEWER TODO this will be from spring security context
     @NotEmpty(message = "Product review is mandatory")
     @Column(name = "description", columnDefinition = "text")
     private String text;
     @NotNull(message = "Product rating is mandatory")
     private int rating;
+
+    @Valid
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
 }

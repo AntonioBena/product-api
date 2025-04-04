@@ -14,6 +14,8 @@ public class ApplicationProperties {
 
     @NotNull
     private final Hnb hnb;
+    @NotNull
+    private final Validation validation;
 
     @Getter
     @AllArgsConstructor
@@ -25,5 +27,12 @@ public class ApplicationProperties {
         @NotBlank(message = "currency is mandatory!")
         private String currency;
 
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public static class Validation {
+        private String emailRegex;
+        private String priceRegex;
     }
 }

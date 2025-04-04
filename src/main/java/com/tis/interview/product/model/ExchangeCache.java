@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -18,4 +19,26 @@ public class ExchangeCache extends BaseEntity {
     private LocalDateTime validFrom;
     private String currency;
     private BigInteger currencyValue;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        ExchangeCache that = (ExchangeCache) o;
+        return Objects.equals(lastExchangeRateFetch, that.lastExchangeRateFetch) && Objects.equals(validFrom, that.validFrom) && Objects.equals(currency, that.currency) && Objects.equals(currencyValue, that.currencyValue);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lastExchangeRateFetch, validFrom, currency, currencyValue);
+    }
+
+    @Override
+    public String toString() {
+        return "ExchangeCache{" +
+                "lastExchangeRateFetch=" + lastExchangeRateFetch +
+                ", validFrom=" + validFrom +
+                ", currency='" + currency + '\'' +
+                ", currencyValue=" + currencyValue +
+                '}';
+    }
 }

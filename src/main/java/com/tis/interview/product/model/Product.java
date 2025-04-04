@@ -6,6 +6,8 @@ import lombok.*;
 
 import java.math.BigInteger;
 
+@EqualsAndHashCode //TODO remove
+@ToString
 @Getter
 @Setter
 @Builder
@@ -14,13 +16,14 @@ import java.math.BigInteger;
 @Entity
 @Table(name = "product")
 public class Product extends BaseEntity {
-    @Min(value = 15, message = "Code must be exactly 15 chars long")
-    @Max(value = 15, message = "Code must be exactly 15 chars long")
+    //    @Min(value = 15, message = "Code must be exactly 15 chars long")
+//    @Max(value = 15, message = "Code must be exactly 15 chars long")
     private String code;
     @NotEmpty(message = "Product name is mandatory")
     private String name;
+    @Column(name = "PRICE_EUR")
     @NotNull(message = "Product price is mandatory")
-    private BigInteger priceEur;
+    private BigInteger price;
     @Column(name = "description", columnDefinition = "text")
     private String description;
 }
