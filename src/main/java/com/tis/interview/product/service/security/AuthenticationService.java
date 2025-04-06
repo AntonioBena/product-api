@@ -5,6 +5,7 @@ import com.tis.interview.product.model.dto.requests.UserRegistrationRequest;
 import com.tis.interview.product.model.dto.response.AuthResponse;
 
 public interface AuthenticationService {
-    AuthResponse<?> registerNewUser(UserRegistrationRequest request) throws Exception;
-    AuthResponse<?> authenticate(AuthenticationRequest request) throws Exception;
+    AuthResponse<Object> registerNewUser(UserRegistrationRequest request);
+
+    AuthResponse<Object> authenticate(AuthenticationRequest request);
 }
