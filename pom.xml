@@ -38,9 +38,16 @@
         <h2.version>2.3.232</h2.version>
         <validation.version>3.4.4</validation.version>
         <springdoc.version>2.8.5</springdoc.version>
+        <security.version>3.4.4</security.version>
+        <modelmapper.version>3.2.2</modelmapper.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>${security.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -49,7 +56,7 @@
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
-            <version>3.2.2</version>
+            <version>${modelmapper.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

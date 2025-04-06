@@ -1,4 +1,4 @@
-package com.tis.interview.product.model.dto;
+package com.tis.interview.product.model.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
