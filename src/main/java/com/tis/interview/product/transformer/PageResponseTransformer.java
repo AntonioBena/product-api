@@ -17,7 +17,7 @@ public class PageResponseTransformer {
         return transformToPageResponse(entities, entity -> mapper.map(entity, dtoClass));
     }
 
-    private static <E, D> PageResponse<D> transformToPageResponse(
+    public static <E, D> PageResponse<D> transformToPageResponse(
             Page<E> entities, Function<E, D> dtoMapper) {
 
         List<D> dtos = entities.stream()

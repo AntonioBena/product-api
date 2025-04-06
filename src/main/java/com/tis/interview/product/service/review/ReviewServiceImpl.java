@@ -32,7 +32,7 @@ public class ReviewServiceImpl implements ReviewService {
     public void createOrUpdateReview(ReviewDto request, String productCode) {
         var entity = mapper.map(request, Review.class);
 
-        reviewRepository.findById(request.getId())
+        reviewRepository.findByIdOrReturnNull(request.getId())
                 .ifPresentOrElse(existingReview -> updateReview(entity, existingReview),
                         () -> createReview(entity, productCode)
                 );
