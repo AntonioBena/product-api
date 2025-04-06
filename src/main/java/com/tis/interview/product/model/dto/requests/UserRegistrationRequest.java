@@ -16,7 +16,11 @@ public class UserRegistrationRequest {
     @NotBlank(message = "Email is mandatory")
     @EmailValidator(message = "Email is not formatted")
     private String accountId;
+    @NotEmpty(message = "Name is mandatory")
+    @NotBlank(message = "Name is mandatory")
     private String firstName;
+    @NotEmpty(message = "Last name is mandatory")
+    @NotBlank(message = "Last name is mandatory")
     private String lastName;
 
     @Override

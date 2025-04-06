@@ -23,7 +23,11 @@ import java.util.Objects;
 @NoArgsConstructor
 @Table(name = "user_entity")
 public class UserEntity extends BaseEntity implements Serializable, UserDetails, Principal {
+    @NotEmpty(message = "Name is mandatory")
+    @NotBlank(message = "Name is mandatory")
     private String firstName;
+    @NotEmpty(message = "Last name is mandatory")
+    @NotBlank(message = "Last name is mandatory")
     private String lastName;
     @NotEmpty(message = "Email is mandatory")
     @NotBlank(message = "Email is mandatory")
