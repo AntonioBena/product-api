@@ -1,0 +1,64 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: product-api
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: sa
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: 'create-drop'
+    open-in-view: false
+server:
+  servlet:
+    context-path: /api/v1/
+
+application:
+  hnb:
+    api-url: "https://api.test.hr"
+    currency-uri: "/tecajn-eur/v3?valuta="
+    currency: "USD"
+  validation:
+    email-regex: "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$"
+    price-regex: "^\\d+(?:[.,]\\d{1,2})?$"
+  security:
+    password-generator:
+      password-length: 8
+      password-limits:
+        left: 48  # numeral 0
+        right: 122 # letter z
+    create-enabled-users: true
+    allowed-origins:
+      - http://localhost:4200
+    allowed-headers:
+      - Authorization
+      - Content-Type
+    allowed-methods:
+      - GET
+      - PUT
+      - POST
+      - OPTIONS
+      - DELETE
+    request-matchers:
+      - /v2/api/docs
+      - /v3/api/docs
+      - /v3/api-docs/**
+      - /swagger-resources
+      - /swagger-resources/**
+      - /configuration/ui
+      - /configuration/security
+      - /swagger-ui/**
+      - /webjars/**
+      - /swagger-ui.html
+      - /account/**
+    cors-configuration:
+      pattern: "/**"
+    csrf-enabled: false
+
+  exchange-scheduler:
+    cron: "0 0 8 * * *"
+    timezone: "Europe/Zagreb"

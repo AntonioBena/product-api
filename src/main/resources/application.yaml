@@ -1,0 +1,45 @@
+spring:
+  profiles:
+    active: prod
+  application:
+    name: product-api
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: sa
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: 'create-drop'
+    open-in-view: false
+server:
+  servlet:
+    context-path: /api/v1/
+
+application:
+  hnb:
+    api-url: ${BASE_URL}
+    currency-uri: ${CURRENCY_URL}
+    currency: ${CURRENCY}
+  validation:
+    email-regex: ${EMAIL_REGEX}
+    price-regex: ${PRICE_REGEX}
+  security:
+    password-generator:
+      password-length: 8
+      password-limits:
+        left: 48  # numeral 0
+        right: 122 # letter z
+    create-enabled-users: true
+    allowed-origins: ${ALLOWED_ORIGINS}
+    allowed-headers: ${ALLOWED_HEADERS}
+    allowed-methods: ${ALLOWED_METHODS}
+    request-matchers: ${REQUEST_MATCHERS}
+    cors-configuration:
+      pattern: ${CORS_PATTERN}
+    csrf-enabled: ${CSRF_ENABLED}
+
+  exchange-scheduler:
+    cron: ${CHRON}
+    timezone: ${SCHEDULER_TIMEZONE}
