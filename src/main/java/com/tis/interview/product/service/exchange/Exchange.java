@@ -11,6 +11,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronExpression;
@@ -25,6 +26,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.concurrent.Executors;
 
+@Profile("prod")
 @Log4j2
 @Component
 @AllArgsConstructor

@@ -32,9 +32,7 @@ class GetClientTest {
         String validExchange = readJsonFile("src/test/resources/jsons/valid_usd_hnb_excange.json");
 
         this.server.expect(
-                        requestTo(
-                                appProps.getHnb().getCurrencyUri() +
-                                        appProps.getHnb().getCurrency())
+                        requestTo("https://api.test.hr/tecajn-eur/v3?valuta=USD")
                 )
                 .andRespond(
                         withSuccess(validExchange, MediaType.APPLICATION_JSON)

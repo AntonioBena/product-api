@@ -12,11 +12,11 @@ import java.util.Objects;
 @Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor    //    @Min(value = 15, message = "Code must be exactly 15 chars long")
-//    @Max(value = 15, message = "Code must be exactly 15 chars long")
+@NoArgsConstructor
 @Entity
 @Table(name = "product")
 public class Product extends BaseEntity {
+    @Size(min = 15, max = 15, message = "Product code must be exactly 15 characters long")
     private String code;
     @NotEmpty(message = "Product name is mandatory")
     private String name;

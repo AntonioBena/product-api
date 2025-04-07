@@ -16,10 +16,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class AuthenticationControllerTest extends BaseTest {
-
     @Autowired
     private MockMvc mockMvc;
-
     private final ObjectMapper mapper = new ObjectMapper();
 
     @Test
