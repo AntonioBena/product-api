@@ -13,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ExceptionResponse {
-
+    private boolean success;
     private Integer code;
     private String description;
     private String error;

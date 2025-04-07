@@ -7,6 +7,8 @@ import static org.springframework.http.HttpStatus.*;
 
 @Getter
 public enum ErrorCodes {
+    CAN_NOT_FOUND(404, NOT_FOUND, "Not found"),
+    ACCOUNT_IS_REGISTERED(305, FORBIDDEN, "Account already created"),
     NO_CODE(0, NOT_IMPLEMENTED, "No code"),
     ACCOUNT_LOCKED(302, FORBIDDEN, "User account is locked"),
     UNAUTHORIZED_ACCESS(401, UNAUTHORIZED, "User can not access resource"),

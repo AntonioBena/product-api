@@ -4,10 +4,12 @@ import com.tis.interview.product.exception.domain.ExchangeNotFoundException;
 import com.tis.interview.product.model.ExchangeCache;
 import com.tis.interview.product.repository.ExchangeRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+@Component
 @AllArgsConstructor
 public class PriceCalculator {
     private final ExchangeRepository exchangeRepository;

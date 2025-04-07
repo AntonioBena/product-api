@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final ExchangeRepository exchangeRepository;
     private final ModelMapper mapper;
-    private final PriceCalculator priceCalculator = new PriceCalculator(exchangeRepository);
+    private final PriceCalculator priceCalculator;
 
     @Override
     public void createOrUpdateProduct(ProductDto request) {
