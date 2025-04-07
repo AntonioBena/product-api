@@ -5,7 +5,9 @@ import com.tis.interview.product.model.dto.response.PageResponse;
 import com.tis.interview.product.exception.domain.ProductNotFoundException;
 import com.tis.interview.product.model.Product;
 import com.tis.interview.product.model.dto.response.PopularProductsResponse;
+import com.tis.interview.product.repository.ExchangeRepository;
 import com.tis.interview.product.repository.ProductRepository;
+import com.tis.interview.product.service.exchange.PriceCalculator;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -16,16 +18,20 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import static com.tis.interview.product.transformer.PageResponseTransformer.transformToPageResponse;
+import static java.math.RoundingMode.HALF_UP;
 
 @Log4j2
 @RequiredArgsConstructor
 @Service
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
+    private final ExchangeRepository exchangeRepository;
     private final ModelMapper mapper;
+    private final PriceCalculator priceCalculator = new PriceCalculator(exchangeRepository);
 
     @Override
     public void createOrUpdateProduct(ProductDto request) {
@@ -90,16 +96,27 @@ public class ProductServiceImpl implements ProductService {
         Page<Product> filteredProducts = productRepository
                 .findAllByFilters(productName, productCode, pageable);
 
-        return transformToPageResponse(filteredProducts, ProductDto.class);
+        var transformed = transformToPageResponse(filteredProducts, ProductDto.class);
+        transformed.getContent()
+                .forEach(p -> p.setProductPriceUsd(calculateUsdPrice(p.getProductPrice())));
+
+        return transformed;
     }
 
     public ProductDto findProductByCode(String productCode) {
         var foundProduct = findProductByCodeOrThrow(productCode);
-        return mapper.map(foundProduct, ProductDto.class);
+        var found = mapper.map(foundProduct, ProductDto.class);
+        found
+                .setProductPriceUsd(calculateUsdPrice(found.getProductPrice()));
+        return found;
     }
 
     private Product findProductByCodeOrThrow(String productCode) {
         return productRepository.findByCode(productCode)
                 .orElseThrow(() -> new ProductNotFoundException("Product not found!"));
+    }
+
+    private BigDecimal calculateUsdPrice(BigDecimal eurPrice){
+        return priceCalculator.calculatePriceUSD(eurPrice, 2, HALF_UP);
     }
 }

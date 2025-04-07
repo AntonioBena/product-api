@@ -28,7 +28,7 @@
         <!--Logger for org.springframework.boot package-->
         <Logger name="org.springframework" level="INFO" additivity="false">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="RollingFile" level="DEBUG"/>
+            <AppenderRef ref="Console" level="DEBUG"/>
         </Logger>
         <!--Logger for org.apache.catalina package-->
         <Logger name="org.apache.catalina" level="INFO" additivity="false">

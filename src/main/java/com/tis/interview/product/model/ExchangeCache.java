@@ -3,7 +3,8 @@ package com.tis.interview.product.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -16,9 +17,9 @@ import java.util.Objects;
 @Table(name = "exchange")
 public class ExchangeCache extends BaseEntity {
     private LocalDateTime lastExchangeRateFetch;
-    private LocalDateTime validFrom;
+    private LocalDate validFrom;
     private String currency;
-    private BigInteger currencyValue;
+    private BigDecimal currencyValue;
 
     @Override
     public boolean equals(Object o) {

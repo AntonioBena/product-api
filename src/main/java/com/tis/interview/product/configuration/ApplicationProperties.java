@@ -27,6 +27,8 @@ public class ApplicationProperties {
     private final Validation validation;
     @NotNull
     private final Security security;
+    @NotNull
+    private final ExchangeScheduler exchangeScheduler;
 
     @Getter
     @AllArgsConstructor
@@ -39,7 +41,7 @@ public class ApplicationProperties {
         private final List<String> requestMatchers;
         private final CorsConfiguration corsConfiguration;
         private final PasswordGenerator passwordGenerator;
-        private Boolean csrfEnabled;
+        private boolean csrfEnabled;
 
         public Customizer<CsrfConfigurer<HttpSecurity>> getCsrfConfig() {
             return csrfEnabled
@@ -83,5 +85,14 @@ public class ApplicationProperties {
     public static class Validation {
         private String emailRegex;
         private String priceRegex;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public static class ExchangeScheduler{
+        @NotBlank(message = "Cron expression is mandatory!")
+        private String cron;
+        @NotBlank(message = "Cron timezone is mandatory!")
+        private String timezone;
     }
 }
